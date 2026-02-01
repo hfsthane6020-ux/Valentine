@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      text-align: center;
+    }
+
+    .box {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 350px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1 id="question">Will you be my Valentine? 💖</h1>
+  <button id="yes">Yes 💘</button>
+  <button id="no">No 💔</button>
+</div>
+
+<script>
+  const noTexts = [
+    "Are you sure? 🥺",
+    "Really sure?? 😢",
+    "Think again 💭",
+    "You might regret this 😭",
+    "Last chance 😳",
+    "Okay but… please? 🥹"
+  ];
+
+  let noCount = 0;
+
+  document.getElementById("no").onclick = () => {
+    const question = document.getElementById("question");
+    question.innerText = noTexts[Math.min(noCount, noTexts.length - 1)];
+    noCount++;
+
+    // move the no button
+    const noBtn = document.getElementById("no");
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 80 + "%";
+    noBtn.style.top = Math.random() * 80 + "%";
+  };
+
+  document.getElementById("yes").onclick = () => {
+    document.body.innerHTML = `
+      <div class="box">
+        <h1>YAYYYY 💖🥰</h1>
+        <p>You just made me the happiest person 😭💘</p>
+        <p>Happy Valentine’s Day 🌹✨</p>
+      </div>
+    `;
+  };
+</script>
+
+</body>
+</html>
